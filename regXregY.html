@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Cannon</title>
+	<link rel="stylesheet" type="text/css" href="">
+	<script src="js/easeljs-0.5.0.min.js"></script>
+	<script>
+	
+
+	function init(){  
+	    var SIZE = 100;  
+	    var canvas = document.getElementById("canvas1");  
+	    var centerX = canvas.width / 2;  
+	    var centerY = canvas.height / 2;  
+	      
+	    // 创建作图的形状对象  
+	    var shape = new createjs.Shape();  
+	    shape.graphics.beginFill("rgb(162, 216, 255)");  
+	    shape.graphics.drawRect(0, 0, SIZE, 2);  
+	    // 设置起点位置，相对于父对象  
+	    shape.x = centerX;  
+	    shape.y = centerY;  
+	    // 设置注册点，用来指定变形位置  
+	    shape.regX = SIZE / 2;  
+	    shape.regY = SIZE / 2;  
+	    shape.rotation = 0;  
+	      
+	    // 设置定时器  
+	    createjs.Ticker.setFPS(30);  
+	    createjs.Ticker.addListener(function(){  
+	        // 对象旋转  
+	        shape.rotation += 1;  
+	        // 布景刷新  
+	        stage.update();  
+	    });  
+	      
+	    // 创建布景对象  
+	    var stage = new createjs.Stage(canvas);  
+	    stage.addChild(shape);  
+	    stage.update();  
+	}  
+		
+	</script>
+</head>
+<body onload="init();">
+	<canvas id="canvas1" width="800" height="600"></canvas>
+</body>
+</html>
